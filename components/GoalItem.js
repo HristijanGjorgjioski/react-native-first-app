@@ -1,11 +1,15 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 
-const GoalItem = ({ text }) => {
+const GoalItem = ({ text, onPress, goalId }) => {
   return (
-    <View style={styles.goalItem}>
-      <Text style={styles.goalText}>{text}</Text>
-    </View>
+    <>
+      <Pressable onPress={onPress.bind(this, goalId)}>
+        <View style={styles.goalItem}>
+          <Text style={styles.goalText}>{text}</Text>
+        </View>
+      </Pressable>
+    </>
   )
 }
 

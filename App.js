@@ -27,6 +27,12 @@ export default function App() {
     ]);
   }
 
+  const deleteGoalHandler = (goalToBeRemovedId) => {
+    setGoals(prevState => {
+      return prevState.filter(goal => goal.id !== goalToBeRemovedId);
+    })
+  }
+
   return (
     <>
       <View style={styles.container}>
@@ -38,7 +44,11 @@ export default function App() {
             data={goals}
             renderItem={(itemData) => {
               return (
-                <GoalItem text={itemData.item.text} />
+                <GoalItem
+                  text={itemData.item.text}
+                  goalId={itemData.item.id}
+                  onPress={deleteGoalHandler}
+                />
               )
             }}
             keyExtractor={(item, index) => {
